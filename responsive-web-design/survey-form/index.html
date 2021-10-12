@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Coffee Survey</title>
+</head>
+<body>
+  <header>
+    <h1 id="title">Coffee Survery</h1>
+    <p id="description">What kind of coffee drinker are you?</p>
+  </header>
+
+  <form id="survey-form">
+    <fieldset>
+
+      <label for="name" id="name-label">Name</label>
+      <input id="name" name="name" placeholder="Enter your name" required type="text">
+      <label for="email" id="email-label">Email</label>
+      <input id="email" name="email" placeholder="Enter your email" required type="email">
+      <label for="number" id="number-label">Age (optional)</label>
+      <input id="number" max="99" min="13" name="age" placeholder="Age" type="number">
+      <label for="dropdown" id="dropdown-label">Which option best describes your current role?</label>
+      <select id="dropdown" name="role">
+        <option disabled selected value>Select current role</option>
+        <option value="student">Student</option>
+        <option value="professional">Professional</option>
+        <option value="barista">Barista</option>
+      </select>
+
+      <p>How many cups of coffee do you drink in a day? </p>
+      <div>
+        <input
+          id="0"
+          name="number-of-cups"
+          type="radio"
+          value="0"
+        >
+        <label for="0">0</label>
+      </div>
+      <div>
+        <input
+          id="1-2"
+          name="number-of-cups"
+          type="radio"
+          value="1-2"
+        >
+        <label for="1-2">1-2</label>
+      </div>
+      <div>
+        <input
+          id="3-4"
+          name="number-of-cups"
+          type="radio"
+          value="3-4"
+        >
+        <label for="3-4">3-4</label>
+      </div>
+      <div>
+        <input
+          id="5-or-more"
+          name="number-of-cups"
+          type="radio"
+          value="5 or more"
+        >
+        <label for="5-or-more">5 or more</label>
+      </div>
+
+      <p>What are your preferred types of coffee drinks <em>(select all that apply)</em></p>
+      <div>
+        <input id="coffee" type="checkbox" value="coffee">
+        <label for="coffee">Coffee</label>
+      </div>
+      <div>
+        <input id="espresso" type="checkbox" value="espresso">
+        <label for="espresso">Espresso</label>
+      </div>
+      <div>
+        <input id="americano" type="checkbox" value="americano">
+        <label for="americano">Americano</label>
+      </div>
+      <div>
+        <input id="latte" type="checkbox" value="latte">
+        <label for="latte">Latte</label>
+      </div>
+      <div>
+        <input id="cappuccino" type="checkbox" value="cappuccino">
+        <label for="cappuccino">Cappuccino</label>
+      </div>
+      <div>
+        <input id="mocha" type="checkbox" value="mocha">
+        <label for="mocha">Mocha</label>
+      </div>
+      <div>
+        <input id="cold-brew" type="checkbox" value="cold brew">
+        <label for="cold-brew">Cold brew</label>
+      </div>
+
+      <p>Have any good jokes?</p>
+      <textarea name="joke" placeholder="Enter joke here..."></textarea>
+
+      <button id="submit">Submit</button>
+    </fieldset>
+  </form>
+
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
