@@ -4,36 +4,72 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./styles.css">
-  <title>Coffee Press</title>
+  <title>Kaldi Koffee</title>
 </head>
 <body>
+  <!-- User Story #1: My product landing page should have a header element with a corresponding id="header". -->
+  <!-- User Story #13: The navbar should always be at the top of the viewport. -->
+  <!-- User Story #14: My product landing page should have at least one media query. -->
+  <!-- User Story #15: My product landing page should utilize CSS flexbox at least once. -->
   <header id="header">
-    <img id="header-img" src="./media/press-logo.png" />
+    <div>
+      <!-- User Story #2: I can see an image within the header element with a corresponding id="header-img". A company logo would make a good image here. -->
+      <img id="header-img" src="./media/goat-logo.jpg" />
+      <h1><a href=#>Kaldi Koffee</a></h1>
+    </div>
+      <!-- User Story #3: Within the #header element I can see a nav element with a corresponding id="nav-bar". -->
     <nav id="nav-bar">
       <ul>
-        <li class="nav-link"><a href="#">Link</a></li>
-        <li class="nav-link"><a href="#">Link</a></li>
-        <li class="nav-link"><a href="#">Link</a></li>
+        <!-- User Story #4: I can see at least three clickable elements inside the nav element, each with the class nav-link. -->
+        <!-- User Story #5: When I click a .nav-link button in the nav element, I am taken to the corresponding section of the landing page. -->
+        <li><a class="nav-link" href="#coffees">Coffees</a></li>
+        <li><a class="nav-link" href="#story">Story</a></li>
+        <li><a class="nav-link" href="#news">News</a></li>
       </ul>
     </nav>
   </header>
-  <iframe
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-    frameborder="0"
-    height="315"
-    id="video"
-    src="https://www.youtube.com/embed/KosK24WxoLA?controls=0"
-    title="How to Brew a Coffee Press"
-    width="560"
-  >
-  </iframe>
 
-  <form action="https://www.freecodecamp.com/email-submit" id="form">
-    <input id="email" name="email" placeholder="email" required type="email">
-    <input id="submit" type="submit" value="Submit">
-  </form>
+  <main>
+    <h2 class="fixed-header-link" id="coffees">Coffees</h2>
+    <img src ="./media/coffee-bag.jpg" />
+    <h2>Latin America</h2>
+    <p>Cocoa and subtle spice</p>
+    <p>13.95</p>
+    <button>Add to Cart</button>
+    <img src ="./media/coffee-bag.jpg" />
+    <h2>Africa</h2>
+    <p>Citrus and dark cocoa</p>
+    <p>13.95</p>
+    <button>Add to Cart</button>
+    <img src ="./media/coffee-bag.jpg" />
+    <h2>Sumatra</h2>
+    <p>Earthy and herbal</p>
+    <p>13.95</p>
+    <button>Add to Cart</button>
 
-    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <h2 class="fixed-header-link" id="story">The Story of Coffee</h2>
+    <!-- User Story #6: I can watch an embedded product video with id="video". -->
+    <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/cxYhjF3APds?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  </div>
+    <p>Learn more <a href="../tribute-page/">here</a>.</p>
+
+    <h2 class="fixed-header-link" id="news">Newsletter</h2>
+    <p>Know about initiatives, announcements and product offers.</p>
+    <!-- User Story #7: My landing page has a form element with a corresponding id="form". -->
+    <!-- User Story #12: When I click the #submit element, the email is submitted to a static page (use this mock URL: https://www.freecodecamp.com/email-submit). -->
+    <form action="https://www.freecodecamp.com/email-submit" id="form">
+      <!-- User Story #8: Within the form, there is an input field with id="email" where I can enter an email address. -->
+      <!-- User Story #9: The #email input field should have placeholder text to let the user know what the field is for. -->
+      <!-- User Story #10: The #email input field uses HTML5 validation to confirm that the entered text is an email address. -->
+      <input id="email" name="email" placeholder="email" required type="email">
+      <!-- User Story #11: Within the form, there is a submit input with a corresponding id="submit". -->
+      <input id="submit" type="submit" value="Sign Up">
+    </form>
+
+    <h2>Coffee Survey</h2>
+    <p>Let us know what kind of a coffee drinker you are!</p>
+    <button>Take Survey</button>
+  </main>
+
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </body>
 </html>
