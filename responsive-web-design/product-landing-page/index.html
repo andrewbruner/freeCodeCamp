@@ -12,7 +12,7 @@
   <!-- User Story #14: My product landing page should have at least one media query. -->
   <!-- User Story #15: My product landing page should utilize CSS flexbox at least once. -->
   <header id="header">
-    <div>
+    <div id="logo-div">
       <!-- User Story #2: I can see an image within the header element with a corresponding id="header-img". A company logo would make a good image here. -->
       <img id="header-img" src="./media/goat-logo.jpg" />
       <h1><a href=#>Kaldi Koffee</a></h1>
@@ -31,45 +31,68 @@
 
   <main>
     <h2 class="fixed-header-link" id="coffees">Coffees</h2>
-    <img src ="./media/coffee-bag.jpg" />
-    <h2>Latin America</h2>
-    <p>Cocoa and subtle spice</p>
-    <p>13.95</p>
-    <button>Add to Cart</button>
-    <img src ="./media/coffee-bag.jpg" />
-    <h2>Africa</h2>
-    <p>Citrus and dark cocoa</p>
-    <p>13.95</p>
-    <button>Add to Cart</button>
-    <img src ="./media/coffee-bag.jpg" />
-    <h2>Sumatra</h2>
-    <p>Earthy and herbal</p>
-    <p>13.95</p>
-    <button>Add to Cart</button>
+    <div id="coffees-div">
+      <div class="coffees-item">
+        <img class="coffees-img" src="./media/coffee-bag.jpg" />
+        <h3>Latin America</h3>
+        <p>Cocoa and subtle spice</p>
+        <p>13.95</p>
+        <button>Add to Cart</button>
+      </div>
+      <div class="coffees-item">
+        <img class="coffees-img" src="./media/coffee-bag.jpg" />
+        <h3>Africa</h3>
+        <p>Citrus and dark cocoa</p>
+        <p>13.95</p>
+        <button>Add to Cart</button>
+      </div>
+      <div class="coffees-item">
+        <img class="coffees-img" src="./media/coffee-bag.jpg" />
+        <h3>Sumatra</h3>
+        <p>Earthy and herbal</p>
+        <p>13.95</p>
+        <button>Add to Cart</button>
+      </div>
+    </div>
 
     <h2 class="fixed-header-link" id="story">The Story of Coffee</h2>
     <!-- User Story #6: I can watch an embedded product video with id="video". -->
-    <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/cxYhjF3APds?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  </div>
-    <p>Learn more <a href="../tribute-page/">here</a>.</p>
+    <div class="iframe-container">
+      <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/cxYhjF3APds?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p id="story-p"><a href="../tribute-page/">Learn more</a></p>
 
-    <h2 class="fixed-header-link" id="news">Newsletter</h2>
-    <p>Know about initiatives, announcements and product offers.</p>
-    <!-- User Story #7: My landing page has a form element with a corresponding id="form". -->
-    <!-- User Story #12: When I click the #submit element, the email is submitted to a static page (use this mock URL: https://www.freecodecamp.com/email-submit). -->
-    <form action="https://www.freecodecamp.com/email-submit" id="form">
-      <!-- User Story #8: Within the form, there is an input field with id="email" where I can enter an email address. -->
-      <!-- User Story #9: The #email input field should have placeholder text to let the user know what the field is for. -->
-      <!-- User Story #10: The #email input field uses HTML5 validation to confirm that the entered text is an email address. -->
-      <input id="email" name="email" placeholder="email" required type="email">
-      <!-- User Story #11: Within the form, there is a submit input with a corresponding id="submit". -->
-      <input id="submit" type="submit" value="Sign Up">
-    </form>
+    <div id="newsletter-div">
+      <h2 class="fixed-header-link" id="news">Newsletter</h2>
+      <p>Know about initiatives, announcements and product offers.</p>
+      <!-- User Story #7: My landing page has a form element with a corresponding id="form". -->
+      <!-- User Story #12: When I click the #submit element, the email is submitted to a static page (use this mock URL: https://www.freecodecamp.com/email-submit). -->
+      <form action="https://www.freecodecamp.com/email-submit" id="form" method="post">
+        <!-- User Story #8: Within the form, there is an input field with id="email" where I can enter an email address. -->
+        <!-- User Story #9: The #email input field should have placeholder text to let the user know what the field is for. -->
+        <!-- User Story #10: The #email input field uses HTML5 validation to confirm that the entered text is an email address. -->
+        <input id="email" name="email" placeholder="email" required type="email">
+        <!-- User Story #11: Within the form, there is a submit input with a corresponding id="submit". -->
+        <input id="submit" type="submit" value="Sign Up">
+      </form>
+    </div>
 
-    <h2>Coffee Survey</h2>
-    <p>Let us know what kind of a coffee drinker you are!</p>
-    <button>Take Survey</button>
+    <div id="survey-div">
+      <h2>Coffee Survey</h2>
+      <p>Let us know what kind of a coffee drinker you are!</p>
+      <button onclick="window.location.href='./../survey-form/'" >Take Survey</button>
+    </div>
   </main>
 
   <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  <script>
+    let form = document.querySelector('form')
+    form.onsubmit = (e) => {
+      e.preventDefault();
+      let email = document.querySelector('#email');
+      console.log(`${email.value} signed up!`);
+      form.reset();
+    }
+  </script>
 </body>
 </html>
