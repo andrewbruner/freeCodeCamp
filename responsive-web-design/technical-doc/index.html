@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- User Story #14: On regular sized devices (laptops, desktops), the element with id="navbar" should be shown on the
+    left side of the screen and should always be visible to the user. -->
+  <!-- User Story #15: My Technical Documentation page should use at least one media query. -->
+  <link rel="stylesheet" href="./styles.css">
+  <title>Coffee Doc</title>
+</head>
+<body>
+  <!-- User Story #8: I can see a nav element with a corresponding id="navbar". -->
+  <nav id="navbar">
+    <!-- User Story #9: The navbar element should contain one header element which contains text that describes the
+      topic of the technical documentation. -->
+    <!-- User Story #11: The header element in the navbar must come before any link (a) elements in the navbar. -->
+    <header>
+      <h1>Coffee Doc</h1>
+      <!-- User Story #10: Additionally, the navbar should contain link (a) elements with the class of nav-link. There
+        should be one for every element with the class main-section. -->
+      <!-- User Story #12: Each element with the class of nav-link should contain text that corresponds to the header
+        text within each section (e.g. if you have a "Hello world" section/header, your navbar should have an element
+        which contains the text "Hello world"). -->
+      <!-- User Story #13: When I click on a navbar element, the page should navigate to the corresponding section of
+        the main-doc element (e.g. If I click on a nav-link element that contains the text "Hello world", the page
+        navigates to a section element that has that id and contains the corresponding header. -->
+      <a class="nav-link" href="#growing">Growing</a>
+      <a class="nav-link" href="#processing">Processing</a>
+      <a class="nav-link" href="#roasting">Roasting</a>
+      <a class="nav-link" href="#brewing">Brewing</a>
+      <a class="nav-link" href="#tasting">Tasting</a>
+    </header>
+  </nav>
+  <!-- User Story #1: I can see a main element with a corresponding id="main-doc", which contains the page's main
+    content (technical documentation). -->
+  <main id="main-doc">
+    <!-- User Story #2: Within the #main-doc element, I can see several section elements, each with a class of
+      main-section. There should be a minimum of 5. -->
+    <!-- User Story #4: Each section element with the class of main-section should also have an id that corresponds with
+      the text of each header contained within it. Any spaces should be replaced with underscores (e.g. The section that
+      contains the header "JavaScript and Java" should have a corresponding id="JavaScript_and_Java"). -->
+    <!-- User Story #5: The .main-section elements should contain at least 10 p elements total (not each). -->
+    <!-- User Story #6: The .main-section elements should contain at least 5 code elements total (not each). -->
+    <section class="main-section" id="growing">
+      <!-- User Story #3: The first element within each .main-section should be a header element which contains text
+        that describes the topic of that section. -->
+      <header><code>Growing</code></header>
+      <p>There are three primary coffee-growing regions, each with a distinct landscape, climate and flavor profile for
+        the coffees that are grown and processed there.</p>
+      <ul>
+        <li>Latin America</li>
+        <p>Crisp acidity with flavors of nuts, cocoa and soft spice.</p>
+        <li>Africa</li>
+        <p>Lush and juicy, with flavors of floral and citrus to berry and spice.</p>
+        <li>Asia / Pacific</li>
+        <p>Full-bodied and syrupy smooth with herbal,earthy flavors.</p>
+      </ul>
+    </section>
+    <section class="main-section" id="processing">
+      <header><code>Processing</code></header>
+      <p>Processing is the term used to describe how the beans (seeds) are removed from the coffee cherry. Processing
+        plays a part in overall flavor, acidity and body.</p>
+      <ul>
+        <li>Washed Processing</li>
+        <p>light, clean and tangy</p>
+        <p>Coffee pulp is mechanically removed, leaving a sticky layer called mucilage on the bean. Beans are washed and
+          then held in a concrete fermentation tank for 18–36 hours to develop flavor, acidity and body. One final
+          washing, and the beans are dried, parchment is removed and the green beans are sorted and graded.</p>
+
+        <li>Semi-washed Processing</li>
+        <p>lower acidity, light-bodied and smooth</p>
+        <p>Coffee pulp is removed using small handpulping machines, and then the coffee is washed and laid out to dry in
+          the sun. After partial drying, parchment is removed and the coffee is laid out again for final drying,
+          followed by sorting and grading.</p>
+
+        <li>Natural Processing</li>
+        <p>wild, unpredictable and berry</p>
+        <p>Coffee cherries are allowed to dry completely on the bean, letting the bean develop flavors before the skin
+          and parchment are removed, followed by sorting and grading.</p>
+      </ul>
+    </section>
+    <section class="main-section" id="roasting">
+      <header><code>Roasting</code></header>
+      <ul>
+        <li>Light Roast</li>
+        <p>Light-roasted coffees have a shorter roast time, lighter body and mellow flavors.</p>
+        <li>Medium Roast</li>
+        <p>Medium-roasted coffees are balanced with smooth and rich flavors.</p>
+        <li>Dark Roast</li>
+        <p>Dark-roasted coffees feature a fuller body and robust, bold flavors.</p>
+      </ul>
+    </section>
+    <section class="main-section" id="brewing">
+      <header><code>Brewing</code></header>
+      <p>Four Fundamentals of Brewing Coffee</p>
+      <ol>
+        <li>Proportion</li>
+        <p>We recommend 2 Tbsp (10 g) ground coffee for every 6 fl oz (180 ml) of water for proper extraction.</p>
+        <li>Grind</li>
+        <p>Grind determines how long the water and coffee are in contact, and how much flavor is extracted. Proper grind
+          delivers only the coffee’s best flavors.</p>
+        <li>Water</li>
+        <p>Coffee is 98 percent water, so fresh, goodtasting water is essential. If your local tap water tastes good,
+          it’s likely to make a good cup of coffee. Otherwise use filtered or bottled water.</p>
+        <li>Freshness</li>
+        <p>Think of coffee as fresh produce. The enemies of coffee are oxygen, light, heat and moisture. Store opened
+          coffee in an opaque, airtight container at room temperature, and use within a week of opening.</p>
+      </ol>
+    </section>
+    <section class="main-section" id="tasting">
+      <header><code>Tasting</code></header>
+      <p>Whenever you taste coffees, compare and contrast them by identifying the four tasting characteristics for each:
+        aroma, acidity, body and flavor.</p>
+      <ul>
+        <li>Aroma</li>
+        <p>The way the coffee smells—it could be earthy, spicy, floral, nutty or others. These distinctive aromas are
+          directly related to the coffee’s flavor.</p>
+        <li>Acidity</li>
+        <p>This is a tangy quality or tartness, not the pH level of the coffee. You can feel acidity on the sides and
+          tip of your tongue, and sometimes the back of your jawbone, the way you do when you taste citrus fruits or
+          drinks. Coffees with high acidity are described as bright, tangy and crisp with a clean finish. Low-acidity
+          coffees feel smooth in your mouth and linger.</p>
+        <li>Body</li>
+        <p>The weight of the coffee on your tongue. Does it feel light or full in your mouth? Like comparing whole milk
+          with nonfat milk. Light-bodied coffees feel light and don’t linger; you feel the weight of full-bodied coffees
+          on your tongue and the flavor lingers.</p>
+        <li>Flavor</li>
+        <p>The way the coffee tastes. This characteristic is registered in different parts of the mouth. Citrus, cocoa
+          and berries are a just a few flavors you might taste. Some are obvious, and others are subtle.</p>
+      </ul>
+    </section>
+  </main>
+
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
