@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <!-- STYLE -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="http://fonts.cdnfonts.com/css/helvetica-2" rel="stylesheet">
+  <style>
+    button {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      border-width: 0;
+      margin: .3rem;
+    }
+    .dark-grey-button {
+      color: white;
+      background: #333;
+    }
+    .light-grey-button {
+      color: black;
+      background: #999;
+    }
+    .orange-button {
+      color: white;
+      background: #f90;
+    }
+    #calculator {
+      font-family: 'Helvetica', sans-serif;
+      font-size: xx-large;
+      background: black;
+      /* iPhone 13 mini width: 2.53 inches * 8, height: 5.18 inches * 8  */
+      width: 20.24rem;
+      height: 41.44rem;
+      margin: 2rem auto 0;
+      border-radius: 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-content: center;
+    }
+    #display {
+      color: white;
+      font-size: 5rem;
+      font-weight: 300;
+      width: 85%;
+      /* 2 of 7 rows of 41.44rem height */
+      height: 11.84rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+    #zero {
+      text-align: left;
+      width: 8.6rem;
+      padding-left: 1.5rem;
+      border-radius: 20%/50%;
+    }
+  </style>
+</head>
+<body>
+  <!-- APPLICATION -->
+  <div id="calculator">
+    <div id="display">0</div>
+    <button id="clear" class="light-grey-button">C</button>
+    <button id="negative" class="light-grey-button">+/-</button>
+    <button id="percent" class="light-grey-button">%</button>
+    <button id="divide" class="operator orange-button">/</button>
+    <button id="seven" class="digit dark-grey-button">7</button>
+    <button id="eight" class="digit dark-grey-button">8</button>
+    <button id="nine" class="digit dark-grey-button">9</button>
+    <button id="multiply" class="operator orange-button">x</button>
+    <button id="four" class="digit dark-grey-button">4</button>
+    <button id="five" class="digit dark-grey-button">5</button>
+    <button id="six" class="digit dark-grey-button">6</button>
+    <button id="subtract" class="operator orange-button">-</button>
+    <button id="one" class="digit dark-grey-button">1</button>
+    <button id="two" class="digit dark-grey-button">2</button>
+    <button id="three" class="digit dark-grey-button">3</button>
+    <button id="add" class="operator orange-button">+</button>
+    <button id="zero" class="digit dark-grey-button">0</button>
+    <button id="decimal" class="dark-grey-button">.</button>
+    <button id="equals" class="orange-button">=</button>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    const state = {
+      display: '0',
+      first: null,
+      second: null,
+      operator: null,
+      waitingForDigit: true
+    };
+
+    function updateDisplay() {
+      document.querySelector('#display').textContent = state.display;
+    }
+
+    document.querySelectorAll('button').forEach(function(button) {
+      button.addEventListener('click', function() {
+        // CLEAR
+        if (button.id === 'clear') {
+          state.display = '0';
+          state.first = null;
+          state.second = null;
+          state.operator = null;
+          state.waitingForDigit = true;
+          updateDisplay();
+          return;
+        }
+
+        // DIGIT
+        if (button.classList.contains('digit')) {
+          if (state.waitingForDigit) {
+            state.display += button.textContent;
+            updateDisplay();
+            return;
+          }
+          if (!state.waitingForDigit) {
+            state.display += button.textContent;
+            updateDisplay();
+            return;
+          }
+          return;
+        }
+
+        // OPERATOR
+        if (button.classList.contains('operator')) {
+          
+        }
+      });
+    });
+  </script>
+</body>
+</html>
