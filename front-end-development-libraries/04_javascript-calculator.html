@@ -6,7 +6,6 @@
   <title>Calculator</title>
   <!-- STYLE -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="http://fonts.cdnfonts.com/css/helvetica-2" rel="stylesheet">
   <style>
     button {
       width: 4rem;
@@ -28,8 +27,8 @@
       background: #f90;
     }
     #calculator {
-      font-family: 'Helvetica', sans-serif;
-      font-size: xx-large;
+      font-family: sans-serif;
+      font-size: 1.5rem;
       background: black;
       /* iPhone 13 mini width: 2.53 inches * 8, height: 5.18 inches * 8  */
       width: 20.24rem;
@@ -44,7 +43,6 @@
     #display {
       color: white;
       font-size: 5rem;
-      font-weight: 300;
       width: 85%;
       /* 2 of 7 rows of 41.44rem height */
       height: 11.84rem;
@@ -90,10 +88,10 @@
   <script>
     const state = {
       display: '0',
-      first: null,
-      second: null,
+      firstValue: null,
       operator: null,
-      waitingForDigit: true
+      waitingForSecondValue: false,
+      secondValue: null
     };
 
     function updateDisplay() {
@@ -105,35 +103,68 @@
         // CLEAR
         if (button.id === 'clear') {
           state.display = '0';
-          state.first = null;
-          state.second = null;
+          state.firstValue = null;
           state.operator = null;
-          state.waitingForDigit = true;
+          state.waitingForSecondValue = false;
+          state.secondValue = null;
           updateDisplay();
           return;
         }
 
         // DIGIT
         if (button.classList.contains('digit')) {
-          if (state.waitingForDigit) {
-            state.display += button.textContent;
+          if (state.waitingForSecondValue) {
+            state.display = button.textContent;
+            state.waitingForSecondValue = false;
             updateDisplay();
             return;
+          } else {
+            if (state.display === '0') {
+              state.display = button.textContent;
+              updateDisplay();
+              return;
+            } else if (state.display.length >= 6) {
+              return;
+            } else {
+              state.display += button.textContent;
+              updateDisplay();
+              return;
+            }
           }
-          if (!state.waitingForDigit) {
-            state.display += button.textContent;
-            updateDisplay();
-            return;
-          }
-          return;
         }
 
         // OPERATOR
         if (button.classList.contains('operator')) {
-          
+          state.firstValue = state.display;
+          state.operator = button.textContent;
+          state.waitingForSecondValue = true;
+        }
+
+        // EQUALS
+        if (button.id === 'equals') {
+          state.secondValue = state.display;
+          let answer = null;
+          switch (state.operator) {
+            case '+':
+              answer = parseFloat(state.firstValue) + parseFloat(state.secondValue);
+              break;
+            case '-':
+              answer = parseFloat(state.firstValue) - parseFloat(state.secondValue);
+              break;
+            case 'x':
+              answer = parseFloat(state.firstValue) * parseFloat(state.secondValue);
+              break;
+            case '/':
+              answer = parseFloat(state.firstValue) / parseFloat(state.secondValue);
+              break;
+          }
+          state.display = answer;
+          updateDisplay();
         }
       });
     });
   </script>
+
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </body>
 </html>
