@@ -6,7 +6,7 @@
 <body>
   <div id="session-label">Session Length</div>
   <button id="session-decrement">-</button>
-  <span id="session-length">25</span>
+  <span id="session-length">1</span>
   <button id="session-increment">+</button>
 
   <div id="break-label">Break Length</div>
@@ -18,18 +18,20 @@
   <div id="time-left">00:00</div>
   <button id="start_stop">Start/Stop</button>
   <button id="reset">Reset</button>
+  <audio id="beep" preload="auto" src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"></audio>
 
   <script>
     const timer = {
       timerID: '',
       running: false,
       paused: false,
+      onBreak: false,
       start() {
         this.running = true;
         if (sessionLengthSpan.textContent < 10) { timeLeftDiv.textContent = `0${sessionLengthSpan.textContent}:00`; }
         else { timeLeftDiv.textContent = `${sessionLengthSpan.textContent}:00`; }
-        timerID = setInterval(() => {
-          if (timeLeftDiv.textContent == '00:00') { console.log('time\'s up!'); clearInterval(timerID); return; }
+        this.timerID = setInterval(() => {
+          if (timeLeftDiv.textContent == '00:00') { this.toggleBreak(); }
           let mins = timeLeftDiv.textContent.charAt(0) + timeLeftDiv.textContent.charAt(1);
           let secs = timeLeftDiv.textContent.charAt(3) + timeLeftDiv.textContent.charAt(4);
           if (secs == 0) { mins = mins - 1; secs = '59' }
@@ -50,34 +52,51 @@
       },
       pause() {
         this.paused = true;
-        clearInterval(timerID);
+        clearInterval(this.timerID);
       },
       restart() {
         this.paused = false;
-        timerID = setInterval(() => {
-          if (timeLeftDiv.textContent == '00:00') { console.log('time\'s up!'); clearInterval(timerID); return; }
+        this.timerID = setInterval(() => {
+          if (timeLeftDiv.textContent == '00:00') { this.toggleBreak(); }
           let mins = timeLeftDiv.textContent.charAt(0) + timeLeftDiv.textContent.charAt(1);
           let secs = timeLeftDiv.textContent.charAt(3) + timeLeftDiv.textContent.charAt(4);
           if (secs == 0) { mins = mins - 1; secs = '59' }
           else { secs = secs - 1 }
-          if (mins == 9) {mins = '09'}
-          if (mins == 8) {mins = '08'}
-          if (mins == 7) {mins = '07'}
-          if (mins == 6) {mins = '06'}
-          if (mins == 5) {mins = '05'}
-          if (mins == 4) {mins = '04'}
-          if (mins == 3) {mins = '03'}
-          if (mins == 2) {mins = '02'}
-          if (mins == 1) {mins = '01'}
-          if (mins == 0) {mins = '00'}
+          if (mins == 9) { mins = '09' }
+          if (mins == 8) { mins = '08' }
+          if (mins == 7) { mins = '07' }
+          if (mins == 6) { mins = '06' }
+          if (mins == 5) { mins = '05' }
+          if (mins == 4) { mins = '04' }
+          if (mins == 3) { mins = '03' }
+          if (mins == 2) { mins = '02' }
+          if (mins == 1) { mins = '01' }
+          if (mins == 0) { mins = '00' }
           if (secs < 10) { secs = `0${secs}` }
           timeLeftDiv.textContent = `${mins}:${secs}`;
         }, 1000);
       },
+      toggleBreak() {
+        audioElement.play();
+        if (this.onBreak) {
+          this.onBreak = false;
+          timerLabelDiv.textContent = 'Session';
+          if (sessionLengthSpan.textContent < 10) { timeLeftDiv.textContent = `0${sessionLengthSpan.textContent}:00`; }
+          else { timeLeftDiv.textContent = `${sessionLengthSpan.textContent}:00`; }
+        }
+        else {
+          this.onBreak = true;
+          timerLabelDiv.textContent = 'Break';
+          if (breakLengthSpan.textContent < 10) { timeLeftDiv.textContent = `0${breakLengthSpan.textContent}:00`; }
+          else { timeLeftDiv.textContent = `${breakLengthSpan.textContent}:00`; }
+        }
+      },
       reset() {
+        audioElement.load();
         this.running = false;
         this.paused = false;
-        clearInterval(timerID);
+        this.onBreak = false;
+        clearInterval(this.timerID);
         this.timerID = '';
       }
     };
@@ -88,9 +107,11 @@
     const breakLengthSpan = document.querySelector('#break-length');
     const breakDecrementButton = document.querySelector('#break-decrement');
     const breakIncrementButton = document.querySelector('#break-increment');
+    const timerLabelDiv = document.querySelector('#timer-label');
     const timeLeftDiv = document.querySelector('#time-left');
     const startStopButton = document.querySelector('#start_stop');
     const resetButton = document.querySelector('#reset');
+    const audioElement = document.querySelector('#beep');
 
     sessionDecrementButton.addEventListener('click', () => {
       if (timer.running) { return; }
@@ -133,6 +154,7 @@
       timer.reset();
       sessionLengthSpan.textContent = '25';
       breakLengthSpan.textContent = '5';
+      timerLabelDiv.textContent = 'Session';
       timeLeftDiv.textContent = '00:00';
     });
   </script>
