@@ -6,7 +6,7 @@
 <body>
   <div id="session-label">Session Length</div>
   <button id="session-decrement">-</button>
-  <span id="session-length">1</span>
+  <span id="session-length">25</span>
   <button id="session-increment">+</button>
 
   <div id="break-label">Break Length</div>
@@ -21,13 +21,14 @@
 
   <script>
     const timer = {
+      timerID: '',
       running: false,
       paused: false,
       start() {
         this.running = true;
         if (sessionLengthSpan.textContent < 10) { timeLeftDiv.textContent = `0${sessionLengthSpan.textContent}:00`; }
         else { timeLeftDiv.textContent = `${sessionLengthSpan.textContent}:00`; }
-        const timerID = setInterval(() => {
+        timerID = setInterval(() => {
           if (timeLeftDiv.textContent == '00:00') { console.log('time\'s up!'); clearInterval(timerID); return; }
           let mins = timeLeftDiv.textContent.charAt(0) + timeLeftDiv.textContent.charAt(1);
           let secs = timeLeftDiv.textContent.charAt(3) + timeLeftDiv.textContent.charAt(4);
@@ -49,13 +50,35 @@
       },
       pause() {
         this.paused = true;
+        clearInterval(timerID);
       },
       restart() {
         this.paused = false;
+        timerID = setInterval(() => {
+          if (timeLeftDiv.textContent == '00:00') { console.log('time\'s up!'); clearInterval(timerID); return; }
+          let mins = timeLeftDiv.textContent.charAt(0) + timeLeftDiv.textContent.charAt(1);
+          let secs = timeLeftDiv.textContent.charAt(3) + timeLeftDiv.textContent.charAt(4);
+          if (secs == 0) { mins = mins - 1; secs = '59' }
+          else { secs = secs - 1 }
+          if (mins == 9) {mins = '09'}
+          if (mins == 8) {mins = '08'}
+          if (mins == 7) {mins = '07'}
+          if (mins == 6) {mins = '06'}
+          if (mins == 5) {mins = '05'}
+          if (mins == 4) {mins = '04'}
+          if (mins == 3) {mins = '03'}
+          if (mins == 2) {mins = '02'}
+          if (mins == 1) {mins = '01'}
+          if (mins == 0) {mins = '00'}
+          if (secs < 10) { secs = `0${secs}` }
+          timeLeftDiv.textContent = `${mins}:${secs}`;
+        }, 1000);
       },
       reset() {
         this.running = false;
         this.paused = false;
+        clearInterval(timerID);
+        this.timerID = '';
       }
     };
 
@@ -70,22 +93,26 @@
     const resetButton = document.querySelector('#reset');
 
     sessionDecrementButton.addEventListener('click', () => {
-      if (sessionLengthSpan.textContent > 1) {
+      if (timer.running) { return; }
+      else if (sessionLengthSpan.textContent > 1) {
         sessionLengthSpan.textContent = parseInt(sessionLengthSpan.textContent) - 1;
       }
     });
     sessionIncrementButton.addEventListener('click', () => {
-      if (sessionLengthSpan.textContent < 60) {
+      if (timer.running) { return; }
+      else if (sessionLengthSpan.textContent < 60) {
         sessionLengthSpan.textContent = parseInt(sessionLengthSpan.textContent) + 1;
       }
     });
     breakDecrementButton.addEventListener('click', () => {
-      if (breakLengthSpan.textContent > 1) {
+      if (timer.running) { return; }
+      else if (breakLengthSpan.textContent > 1) {
         breakLengthSpan.textContent = parseInt(breakLengthSpan.textContent) - 1;
       }
     });
     breakIncrementButton.addEventListener('click', () => {
-      if (breakLengthSpan.textContent < 60) {
+      if (timer.running) { return; }
+      else if (breakLengthSpan.textContent < 60) {
         breakLengthSpan.textContent = parseInt(breakLengthSpan.textContent) + 1;
       }
     });
