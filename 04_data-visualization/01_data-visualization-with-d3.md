@@ -8,7 +8,7 @@ D3 supports many different kinds of input data formats. Then, using its powerful
 
 In the Data Visualization with D3 courses, you'll learn how to work with data to create different charts, graphs, hover elements, and other ingredients to create dynamic and attractive data visualizations.
 
-## Add Document Elements with D3
+# Add Document Elements with D3
 
 D3 has several methods that let you add and change elements in your document.
 
@@ -38,6 +38,8 @@ D3 allows you to chain several methods together with periods to perform a number
 
 ---
 
+## Challenge
+
 Use the `select` method to select the `body` tag in the document. Then `append` an `h1` tag to it, and add the text `Learning D3` into the `h1` element.
 
 ```html
@@ -54,7 +56,7 @@ Use the `select` method to select the `body` tag in the document. Then `append` 
 </body>
 ```
 
-## Select a Group of Elements with D3
+# Select a Group of Elements with D3
 
 D3 also has the `selectAll()` method to select a group of elements. It returns an array of HTML nodes for all the items in the document that match the input string. Here's an example to select all the anchor tags in a document:
 
@@ -65,6 +67,8 @@ const anchors = d3.selectAll('a');
 Like the `select()` method, `selectAll()` supports method chaining, and you can use it with other methods.
 
 ---
+
+## Challenge
 
 Select all of the `li` tags in the document, and change their text to the string `list item` by chaining the `.text()` method.
 
@@ -86,7 +90,7 @@ Select all of the `li` tags in the document, and change their text to the string
 </body>
 ```
 
-## Work with Data in D3
+# Work with Data in D3
 
 The D3 library focuses on a data-driven approach. When you have a set of data, you can apply D3 methods to display it on the page. Data comes in many formats, but this challenge uses a simple array of numbers.
 
@@ -116,6 +120,8 @@ It may seem confusing to select elements that don't exist yet. This code is tell
 
 ---
 
+## Challenge
+
 Select the `body` node, then select all `h2` elements. Have D3 create and append an `h2` tag for each item in the `dataset` array. The text in the `h2` should say `New Title`. Your code should use the `data()` and `enter()` methods.
 
 ```html
@@ -136,7 +142,7 @@ Select the `body` node, then select all `h2` elements. Have D3 create and append
 </body>
 ```
 
-## Work with Dynamic Data in D3
+# Work with Dynamic Data in D3
 
 The last two challenges cover the basics of displaying data dynamically with D3 using the `data()` and `enter()` methods. These methods take a data set and, together with the `append()` method, create a new DOM element for each entry in the data set.
 
@@ -153,6 +159,8 @@ In the example above, the parameter `d` refers to a single entry in the dataset 
 Using the current example as context, the first `h2` element is bound to 12, the second `h2` element is bound to 31, the third `h2` element is bound to 22, and so on.
 
 ---
+
+## Challenge
 
 Change the `text()` method so that each `h2` element displays the corresponding value from the `dataset` array with a single space and the string `USD`. For example, the first heading should be `12 USD`.
 
@@ -174,7 +182,7 @@ Change the `text()` method so that each `h2` element displays the corresponding 
 </body>
 ```
 
-## Add Inline Styling to Elements
+# Add Inline Styling to Elements
 
 D3 lets you add inline CSS styles on dynamic elements with the `style()` method.
 
@@ -185,6 +193,8 @@ selection.style('color', 'blue');
 ```
 
 ---
+
+## Challenge
 
 Add the `style()` method to the code in the editor to make all the displayed text have a `font-family` of `verdana`.
 
@@ -207,7 +217,7 @@ Add the `style()` method to the code in the editor to make all the displayed tex
 </body>
 ```
 
-## Change Styles Based on Data
+# Change Styles Based on Data
 
 D3 is about visualization and presentation of data. It's likely you'll want to change the styling of elements based on the data. You can use a callback function in the `style()` method to change the styling for different elements.
 
@@ -222,6 +232,8 @@ selection.style('color', (d) => {
 The `style()` method is not limited to setting the `color` - it can be used with other CSS properties as well.
 
 ---
+
+## Challenge
 
 Add the `style()` method to the code in the editor to set the `color` of the `h2` elements conditionally. Write the callback function so if the data value is less than 20, it returns red, otherwise it returns green.
 
@@ -246,7 +258,7 @@ Add the `style()` method to the code in the editor to set the `color` of the `h2
 </body>
 ```
 
-## Add Classes with D3
+# Add Classes with D3
 
 Using a lot of inline styles on HTML elements gets hard to manage, even for smaller apps. It's easier to add a class to elements and style that class one time using CSS rules. D3 has the `attr()` method to add any HTML attribute to an element, including a class name.
 
@@ -259,6 +271,8 @@ selection.attr('class', 'container');
 Note that the `class` parameter will remain the same whenever you need to add a class and only the `container` parameter will change.
 
 ---
+
+## Challenge
 
 Add the `attr()` method to the code in the editor and put a class of `bar` on the `div` elements.
 
@@ -288,7 +302,7 @@ Add the `attr()` method to the code in the editor and put a class of `bar` on th
 </body>
 ```
 
-## Update the Height of an Element Dynamically
+# Update the Height of an Element Dynamically
 
 The previous challenges covered how to display data from an array and how to add CSS classes. You can combine these lessons to create a simple bar chart. There are two steps to this:
 
@@ -303,6 +317,8 @@ selection.style('cssProperty', (d) => d)
 ```
 
 ---
+
+## Challenge
 
 Add the `style()` method to the code in the editor to set the `height` property for each element. Use a callback function to return the value of the data point with the string `px` added to it.
 
@@ -333,7 +349,7 @@ Add the `style()` method to the code in the editor to set the `height` property 
 </body>
 ```
 
-## Change the Presentation of a Bar Chart
+# Change the Presentation of a Bar Chart
 
 The last challenge created a bar chart, but there are a couple of formatting changes that could improve it:
 
@@ -342,6 +358,8 @@ The last challenge created a bar chart, but there are a couple of formatting cha
 2. Increase the height of the bars to better show the difference in values, which is done by multiplying the value by a number to scale the height
 
 ---
+
+## Challenge
 
 First, add a `margin` of `2px` to the `bar` class in the `style` tag. Next, change the callback function in the `style()` method so it returns a value `10` times the original data value (plus the `px`).
 
@@ -375,7 +393,7 @@ First, add a `margin` of `2px` to the `bar` class in the `style` tag. Next, chan
 </body>
 ```
 
-## Learn About SVG in D3
+# Learn About SVG in D3
 
 SVG stands for *Scalable Vector Graphics*.
 
@@ -386,6 +404,8 @@ SVG is used to make common geometric shapes. Since D3 maps data into a visual re
 CSS can be scalable when styles use relative units (such as `vh`, `vw`, or percentages), but using SVG is more flexible to build data visualizations.
 
 ---
+
+## Challenge
 
 Add an `svg` node to the `body` using `append()`. Give it a `width` attribute set to the provided `w` constant and a `height` attribute set to the provided `h` constant using the `attr()` or `style()` methods for each. You'll see it in the output because there's a `background-color` of pink applied to it in the `style` tag.
 
@@ -416,7 +436,7 @@ Add an `svg` node to the `body` using `append()`. Give it a `width` attribute se
 </body>
 ```
 
-## Display Shapes with SVG
+# Display Shapes with SVG
 
 The last challenge created an `svg` element with a given width and height, which was visible because it had a `background-color` applied to it in the `style` tag. The code made space for the given width and height.
 
@@ -429,6 +449,8 @@ To place a shape in the middle of the 500 (width) x 100 (height) `svg` from last
 An SVG `rect` has four attributes. There are the `x` and `y` coordinates for where it is placed in the `svg` area. It also has a `height` and `width` to specify the size.
 
 ---
+
+## Challenge
 
 Add a `rect` shape to the `svg` using `append()`, and give it a `width` attribute of `25` and `height` attribute of `100`. Also, give the `rect` `x` and `y` attributes each set to `0`.
 
@@ -457,7 +479,7 @@ Add a `rect` shape to the `svg` using `append()`, and give it a `width` attribut
 </body>
 ```
 
-## Create a Bar for Each Data Point in the Set
+# Create a Bar for Each Data Point in the Set
 
 The last challenge added only one rectangle to the `svg` element to represent a bar. Here, you'll combine what you've learned so far about `data()`, `enter()`, and SVG shapes to create and append a rectangle for each data point in `dataset`.
 
@@ -473,6 +495,8 @@ d3.select('body').selectAll('div')
 There are a few differences working with `rect` elements instead of `div` elements. The `rect` elements must be appended to an `svg` element, not directly to the body. Also, you need to tell D3 where to place each `rect` within the `svg` area. The bar placement will be covered in the next challenge.
 
 ---
+
+## Challenge
 
 Use the `data()`, `enter()`, and `append()` methods to create and append a `rect` for each item in `dataset`. The bars should display all on top of each other; this will be fixed in the next challenge.
 
@@ -505,7 +529,7 @@ Use the `data()`, `enter()`, and `append()` methods to create and append a `rect
 </body>
 ```
 
-## Dynamically Set the Coordinates for Each Bar
+# Dynamically Set the Coordinates for Each Bar
 
 The last challenge created and appended a rectangle to the `svg` element for each point in `dataset` to represent a bar. Unfortunately, they were all stacked on top of each other.
 
@@ -524,6 +548,8 @@ selection.attr("property", (d, i) => {
 It's important to note that you do NOT need to write a `for` loop or use `forEach()` to iterate over the items in the data set. Recall that the `data()` method parses the data set, and any method that's chained after data() is run once for each item in the data set.
 
 ---
+
+## Challenge
 
 Change the `x` attribute callback function so it returns the index times 30.
 
@@ -560,7 +586,7 @@ Change the `x` attribute callback function so it returns the index times 30.
 </body>
 ```
 
-## Dynamically Change the Height of Each Bar
+# Dynamically Change the Height of Each Bar
 
 The height of each bar can be set to the value of the data point in the array, similar to how the x value was set dynamically.
 
@@ -573,6 +599,8 @@ selection.attr("property", (d, i) => {
 Here `d` would be the data point value, and `i` would be the index of the data point in the array.
 
 ---
+
+## Challenge
 
 Change the callback function for the `height` attribute to return the data value times 3.
 
@@ -609,7 +637,7 @@ Change the callback function for the `height` attribute to return the data value
 </body>
 ```
 
-## Invert SVG Elements
+# Invert SVG Elements
 
 You may have noticed the bar chart looked like it's upside-down, or inverted. This is because of how SVG uses (x, y) coordinates.
 
@@ -622,6 +650,8 @@ The height of the SVG area is 100. If you have a data point of 0 in the set, you
 The `y` coordinate that is `y = heightOfSVG - heightOfBar` would place the bars right-side-up.
 
 ---
+
+## Challenge
 
 Change the callback function for the `y` attribute to set the bars right-side-up. Remember that the `height` of the bar is 3 times the data value `d`.
 
@@ -658,17 +688,17 @@ Change the callback function for the `y` attribute to set the bars right-side-up
 </body>
 ```
 
-## Change the Color of an SVG Element
-## Add Labels to D3 Elements
-## Style D3 Labels
-## Add a Hover Effect to a D3 Element
-## Add a Tooltip to a D3 Element
-## Create a Scatterplot with SVG Circles
-## Add Attributes to the Circle Elements
-## Add Labels to Scatter Plot Circles
-## Create a Linear Scale with D3
-## Set a Domain and a Range on a Scale
-## Use the d3.max and d3.min Functions to Find Minimum and Maximum Values in a Dataset
-## Use Dynamic Scales
-## Use a Pre-Defined Scale to Place Elements
-## Add Axes to a Visualization
+# Change the Color of an SVG Element
+# Add Labels to D3 Elements
+# Style D3 Labels
+# Add a Hover Effect to a D3 Element
+# Add a Tooltip to a D3 Element
+# Create a Scatterplot with SVG Circles
+# Add Attributes to the Circle Elements
+# Add Labels to Scatter Plot Circles
+# Create a Linear Scale with D3
+# Set a Domain and a Range on a Scale
+# Use the d3.max and d3.min Functions to Find Minimum and Maximum Values in a Dataset
+# Use Dynamic Scales
+# Use a Pre-Defined Scale to Place Elements
+# Add Axes to a Visualization
