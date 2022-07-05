@@ -36,8 +36,6 @@ d3.select('ul')
 
 D3 allows you to chain several methods together with periods to perform a number of actions in a row.
 
----
-
 ## Challenge
 
 Use the `select` method to select the `body` tag in the document. Then `append` an `h1` tag to it, and add the text `Learning D3` into the `h1` element.
@@ -65,8 +63,6 @@ const anchors = d3.selectAll('a');
 ```
 
 Like the `select()` method, `selectAll()` supports method chaining, and you can use it with other methods.
-
----
 
 ## Challenge
 
@@ -118,8 +114,6 @@ Here is an example that selects a `ul` element and creates a new list item based
 
 It may seem confusing to select elements that don't exist yet. This code is telling D3 to first select the `ul` on the page. Next, select all list items, which returns an empty selection. Then the `data()` method reviews the dataset and runs the following code three times, once for each item in the array. The `enter()` method sees there are no `li` elements on the page, but it needs 3 (one for each piece of data in `dataset`). New `li` elements are appended to the ul and have the text `New item`.
 
----
-
 ## Challenge
 
 Select the `body` node, then select all `h2` elements. Have D3 create and append an `h2` tag for each item in the `dataset` array. The text in the `h2` should say `New Title`. Your code should use the `data()` and `enter()` methods.
@@ -158,8 +152,6 @@ In the example above, the parameter `d` refers to a single entry in the dataset 
 
 Using the current example as context, the first `h2` element is bound to 12, the second `h2` element is bound to 31, the third `h2` element is bound to 22, and so on.
 
----
-
 ## Challenge
 
 Change the `text()` method so that each `h2` element displays the corresponding value from the `dataset` array with a single space and the string `USD`. For example, the first heading should be `12 USD`.
@@ -191,8 +183,6 @@ The `style()` method takes a comma-separated key-value pair as an argument. Here
 ```javascript
 selection.style('color', 'blue');
 ```
-
----
 
 ## Challenge
 
@@ -231,8 +221,6 @@ selection.style('color', (d) => {
 
 The `style()` method is not limited to setting the `color` - it can be used with other CSS properties as well.
 
----
-
 ## Challenge
 
 Add the `style()` method to the code in the editor to set the `color` of the `h2` elements conditionally. Write the callback function so if the data value is less than 20, it returns red, otherwise it returns green.
@@ -269,8 +257,6 @@ selection.attr('class', 'container');
 ```
 
 Note that the `class` parameter will remain the same whenever you need to add a class and only the `container` parameter will change.
-
----
 
 ## Challenge
 
@@ -316,8 +302,6 @@ Recall the format to set a style using a callback function:
 selection.style('cssProperty', (d) => d)
 ```
 
----
-
 ## Challenge
 
 Add the `style()` method to the code in the editor to set the `height` property for each element. Use a callback function to return the value of the data point with the string `px` added to it.
@@ -356,8 +340,6 @@ The last challenge created a bar chart, but there are a couple of formatting cha
 1. Add space between each bar to visually separate them, which is done by adding a margin to the CSS for the `bar` class
 
 2. Increase the height of the bars to better show the difference in values, which is done by multiplying the value by a number to scale the height
-
----
 
 ## Challenge
 
@@ -403,8 +385,6 @@ SVG is used to make common geometric shapes. Since D3 maps data into a visual re
 
 CSS can be scalable when styles use relative units (such as `vh`, `vw`, or percentages), but using SVG is more flexible to build data visualizations.
 
----
-
 ## Challenge
 
 Add an `svg` node to the `body` using `append()`. Give it a `width` attribute set to the provided `w` constant and a `height` attribute set to the provided `h` constant using the `attr()` or `style()` methods for each. You'll see it in the output because there's a `background-color` of pink applied to it in the `style` tag.
@@ -447,8 +427,6 @@ When you place a shape into the `svg` area, you can specify where it goes with `
 To place a shape in the middle of the 500 (width) x 100 (height) `svg` from last challenge, the `x` coordinate would be 250 and the `y` coordinate would be 50.
 
 An SVG `rect` has four attributes. There are the `x` and `y` coordinates for where it is placed in the `svg` area. It also has a `height` and `width` to specify the size.
-
----
 
 ## Challenge
 
@@ -494,8 +472,6 @@ d3.select('body').selectAll('div')
 
 There are a few differences working with `rect` elements instead of `div` elements. The `rect` elements must be appended to an `svg` element, not directly to the body. Also, you need to tell D3 where to place each `rect` within the `svg` area. The bar placement will be covered in the next challenge.
 
----
-
 ## Challenge
 
 Use the `data()`, `enter()`, and `append()` methods to create and append a `rect` for each item in `dataset`. The bars should display all on top of each other; this will be fixed in the next challenge.
@@ -521,10 +497,10 @@ Use the `data()`, `enter()`, and `append()` methods to create and append a `rect
        .append('rect')
 
        // Add your code above this line
-       .attr("x", 0)
-       .attr("y", 0)
-       .attr("width", 25)
-       .attr("height", 100);
+       .attr('x', 0)
+       .attr('y', 0)
+       .attr('width', 25)
+       .attr('height', 100);
   </script>
 </body>
 ```
@@ -540,14 +516,12 @@ For a bar chart, all of the bars should sit on the same vertical level, which me
 The `attr()` method in D3 accepts a callback function to dynamically set that attribute. The callback function takes two arguments, one for the data point itself (usually `d`) and one for the index of the data point in the array. The second argument for the index is optional. Here's the format:
 
 ```javascript
-selection.attr("property", (d, i) => {
+selection.attr('property', (d, i) => {
 
 })
 ```
 
 It's important to note that you do NOT need to write a `for` loop or use `forEach()` to iterate over the items in the data set. Recall that the `data()` method parses the data set, and any method that's chained after data() is run once for each item in the data set.
-
----
 
 ## Challenge
 
@@ -591,7 +565,7 @@ Change the `x` attribute callback function so it returns the index times 30.
 The height of each bar can be set to the value of the data point in the array, similar to how the x value was set dynamically.
 
 ```javascript
-selection.attr("property", (d, i) => {
+selection.attr('property', (d, i) => {
 
 })
 ```
@@ -649,8 +623,6 @@ The height of the SVG area is 100. If you have a data point of 0 in the set, you
 
 The `y` coordinate that is `y = heightOfSVG - heightOfBar` would place the bars right-side-up.
 
----
-
 ## Challenge
 
 Change the callback function for the `y` attribute to set the bars right-side-up. Remember that the `height` of the bar is 3 times the data value `d`.
@@ -694,8 +666,6 @@ The bars are in the right position, but they are all the same black color. SVG h
 
 In SVG, a `rect` shape is colored with the `fill` attribute. It supports hex codes, color names, and rgb values, as well as more complex options like gradients and transparency.
 
----
-
 ## Challenge
 
 Add an `attr()` method to set the `fill` of all the bars to the color navy.
@@ -737,8 +707,6 @@ D3 lets you label a graph element, such as a bar, using the SVG `text` element.
 Like the `rect` element, a `text` element needs to have `x` and `y` attributes, to place it on the SVG canvas. It also needs to access the data to display those values.
 
 D3 gives you a high level of control over how you label your bars.
-
----
 
 ## Challenge
 
@@ -787,8 +755,6 @@ The code in the editor already binds the data to each new `text` element. First,
 # Style D3 Labels
 
 D3 methods can add styles to the bar labels. The `fill` attribute sets the color of the text for a `text` node. The `style()` method sets CSS rules for other styles, such as `font-family` or `font-size`.
-
----
 
 ## Challenge
 
@@ -839,8 +805,6 @@ Set the `font-size` of the `text` elements to `25px`, and the color of the text 
 It's possible to add effects that highlight a bar when the user hovers over it with the mouse. So far, the styling for the rectangles is applied with the built-in D3 and SVG methods, but you can use CSS as well.
 
 You set the CSS class on the SVG elements with the `attr()` method. Then the `:hover` pseudo-class for your new class holds the style rules for any hover effects.
-
----
 
 ## Challenge
 
@@ -896,8 +860,6 @@ A tooltip shows more information about an item on a page when the user hovers ov
 
 `title` pairs with the `text()` method to dynamically add data to the bars.
 
----
-
 ## Challenge
 
 Append a `title` element under each `rect` node. Then call the `text()` method with a callback function so the text displays the data value.
@@ -926,10 +888,10 @@ Append a `title` element under each `rect` node. Then call the `text()` method w
        .append('rect')
        .attr('x', (d, i) => i * 30)
        .attr('y', (d, i) => h - 3 * d)
-       .attr("width", 25)
-       .attr("height", (d, i) => d * 3)
-       .attr("fill", "navy")
-       .attr("class", "bar")
+       .attr('width', 25)
+       .attr('height', (d, i) => d * 3)
+       .attr('fill', 'navy')
+       .attr('class', 'bar')
        // Add your code below this line
 
        .append('title')
@@ -937,13 +899,13 @@ Append a `title` element under each `rect` node. Then call the `text()` method w
 
        // Add your code above this line
 
-    svg.selectAll("text")
+    svg.selectAll('text')
        .data(dataset)
        .enter()
-       .append("text")
+       .append('text')
        .text((d) => d)
-       .attr("x", (d, i) => i * 30)
-       .attr("y", (d, i) => h - (d * 3 + 3))
+       .attr('x', (d, i) => i * 30)
+       .attr('y', (d, i) => h - (d * 3 + 3))
   </script>
 </body>
 ```
@@ -953,8 +915,6 @@ Append a `title` element under each `rect` node. Then call the `text()` method w
 A scatter plot is another type of visualization. It usually uses circles to map data points, which have two values each. These values tie to the `x` and `y` axes, and are used to position the circle in the visualization.
 
 SVG has a `circle` tag to create the circle shape. It works a lot like the `rect` elements you used for the bar chart.
-
----
 
 ## Challenge
 
@@ -982,12 +942,12 @@ Use the `data()`, `enter()`, and `append()` methods to bind `dataset` to new `ci
     const w = 500;
     const h = 500;
 
-    const svg = d3.select("body")
-                  .append("svg")
-                  .attr("width", w)
-                  .attr("height", h);
+    const svg = d3.select('body')
+                  .append('svg')
+                  .attr('width', w)
+                  .attr('height', h);
 
-    svg.selectAll("circle")
+    svg.selectAll('circle')
        // Add your code below this line
 
        .data(dataset)
@@ -1008,8 +968,6 @@ A `circle` in SVG has three main attributes. The `cx` and `cy` attributes are th
 Just like the `rect` `y` coordinate, the `cy` attribute for a `circle` is measured from the top of the SVG canvas, not from the bottom.
 
 All three attributes can use a callback function to set their values dynamically. Remember that all methods chained after `data(dataset)` run once per item in `dataset`. The `d` parameter in the callback function refers to the current item in `dataset`, which is an array for each point. You use bracket notation, like `d[0]`, to access the values in that array.
-
----
 
 ## Challenge
 
@@ -1035,23 +993,22 @@ Add `cx`, `cy`, and `r` attributes to the `circle` elements. The `cx` value shou
     const w = 500;
     const h = 500;
 
-    const svg = d3.select("body")
-                  .append("svg")
-                  .attr("width", w)
-                  .attr("height", h);
+    const svg = d3.select('body')
+                  .append('svg')
+                  .attr('width', w)
+                  .attr('height', h);
 
-    svg.selectAll("circle")
+    svg.selectAll('circle')
        .data(dataset)
        .enter()
-       .append("circle")
+       .append('circle')
        // Add your code below this line
 
-       .attr('cx', (d, i) => d[0])
-       .attr('cy', (d, i) => h - d[1])
+       .attr('cx', (d) => d[0])
+       .attr('cy', (d) => h - d[1])
        .attr('r', 5);
 
        // Add your code above this line
-
   </script>
 </body>
 ```
@@ -1063,8 +1020,6 @@ You can add text to create labels for the points in a scatter plot.
 The goal is to display the comma-separated values for the first (`x`) and second (`y`) fields of each item in `dataset`.
 
 The `text` nodes need `x` and `y` attributes to position it on the SVG canvas. In this challenge, the `y` value (which determines height) can use the same value that the `circle` uses for its `cy` attribute. The `x` value can be slightly larger than the `cx` value of the circle, so the label is visible. This will push the label to the right of the plotted point.
-
----
 
 ## Challenge
 
@@ -1090,23 +1045,23 @@ Label each point on the scatter plot using the `text` elements. The text of the 
     const w = 500;
     const h = 500;
 
-    const svg = d3.select("body")
-                  .append("svg")
-                  .attr("width", w)
-                  .attr("height", h);
+    const svg = d3.select('body')
+                  .append('svg')
+                  .attr('width', w)
+                  .attr('height', h);
 
-    svg.selectAll("circle")
+    svg.selectAll('circle')
        .data(dataset)
        .enter()
-       .append("circle")
-       .attr("cx", (d, i) => d[0])
-       .attr("cy", (d, i) => h - d[1])
-       .attr("r", 5);
+       .append('circle')
+       .attr('cx', (d, i) => d[0])
+       .attr('cy', (d, i) => h - d[1])
+       .attr('r', 5);
 
-    svg.selectAll("text")
+    svg.selectAll('text')
        .data(dataset)
        .enter()
-       .append("text")
+       .append('text')
        // Add your code below this line
 
        .text((d, i) => `${d[0]}, ${d[1]}`)
@@ -1136,8 +1091,6 @@ const scale = d3.scaleLinear()
 
 By default, a scale uses the identity relationship. The value of the input is the same as the value of the output. A separate challenge covers how to change this.
 
----
-
 ## Challenge
 
 Change the `scale` variable to create a linear scale. Then set the `output` variable to the scale called with an input argument of `50`.
@@ -1152,10 +1105,9 @@ Change the `scale` variable to create a linear scale. Then set the `output` vari
 
     // Add your code above this line
 
-    d3.select("body")
-      .append("h2")
+    d3.select('body')
+      .append('h2')
       .text(output);
-
   </script>
 </body>
 ```
@@ -1184,8 +1136,6 @@ In order, the following values would be displayed in the console: `10`, `500`, `
 
 Notice that the scale uses the linear relationship between the domain and range values to figure out what the output should be for a given number. The minimum value in the domain (50) maps to the minimum value (10) in the range.
 
----
-
 ## Challenge
 
 Create a scale and set its domain to `[250, 500]` and range to `[10, 150]`.
@@ -1196,15 +1146,18 @@ Create a scale and set its domain to `[250, 500]` and range to `[10, 150]`.
 <body>
   <script>
     // Add your code below this line
+    
     const scale = d3.scaleLinear();
 
     scale.domain([250, 500])
-    .range([10, 150]);
-
+         .range([10, 150]);
+    
     // Add your code above this line
+    
     const output = scale(50);
-    d3.select("body")
-      .append("h2")
+
+    d3.select('body')
+      .append('h2')
       .text(output);
   </script>
 </body>
@@ -1232,8 +1185,6 @@ const minX = d3.min(locationData, (d) => d[0]);
 ```
 
 `minX` would have the value `1`.
-
----
 ## Challenge
 
 The `positionData` array holds sub arrays of x, y, and z coordinates. Use a D3 method to find the maximum value of the z coordinate (the third value) from the arrays and save it in the `output` variable.
@@ -1248,8 +1199,8 @@ The `positionData` array holds sub arrays of x, y, and z coordinates. Use a D3 m
 
     // Add your code above this line
 
-    d3.select("body")
-      .append("h2")
+    d3.select('body')
+      .append('h2')
       .text(output)
   </script>
 </body>
@@ -1288,8 +1239,6 @@ const xScale = d3.scaleLinear()
 ```
 
 The padding may be confusing at first. Picture the x-axis as a horizontal line from 0 to 500 (the width value for the SVG canvas). Including the padding in the `range()` method forces the plot to start at 30 along that line (instead of 0), and end at 470 (instead of 500).
-
----
 
 ## Challenge
 
@@ -1335,8 +1284,8 @@ Use the `yScale` variable to create a linear y-axis scale. The domain should sta
     // Add your code above this line
 
     const output = yScale(411); // Returns 30
-    d3.select("body")
-      .append("h2")
+    d3.select('body')
+      .append('h2')
       .text(output)
   </script>
 </body>
@@ -1350,12 +1299,10 @@ You set the coordinate attribute values for an SVG shape with the scaling functi
 
 ```javascript
 shape
-  .attr("x", (d) => xScale(d[0]))
+  .attr('x', (d) => xScale(d[0]))
 ```
 
 Scales set shape coordinate attributes to place the data points onto the SVG canvas. You don't need to apply scales when you display the actual data value, for example, in the `text()` method for a tooltip or label.
-
----
 
 ## Challenge
 
@@ -1391,15 +1338,15 @@ For the `text` elements, apply the scales to set the `x` and `y` attributes. The
                      .domain([0, d3.max(dataset, (d) => d[1])])
                      .range([h - padding, padding]);
 
-    const svg = d3.select("body")
-                  .append("svg")
-                  .attr("width", w)
-                  .attr("height", h);
+    const svg = d3.select('body')
+                  .append('svg')
+                  .attr('width', w)
+                  .attr('height', h);
 
-    svg.selectAll("circle")
+    svg.selectAll('circle')
        .data(dataset)
        .enter()
-       .append("circle")
+       .append('circle')
        // Add your code below this line
 
        .attr('cx', (d) => xScale(d[0]))
@@ -1408,12 +1355,11 @@ For the `text` elements, apply the scales to set the `x` and `y` attributes. The
 
        // Add your code above this line
 
-    svg.selectAll("text")
+    svg.selectAll('text')
        .data(dataset)
        .enter()
-       .append("text")
-       .text((d) =>  (d[0] + ", "
- + d[1]))
+       .append('text')
+       .text((d) =>  (d[0] + ", " + d[1]))
        // Add your code below this line
 
        .attr('x', (d) => xScale(d[0] + 10))
@@ -1439,14 +1385,12 @@ The next step is to render the axis on the SVG canvas. To do so, you can use a g
 ```javascript
 const xAxis = d3.axisBottom(xScale);
 
-svg.append("g")
-   .attr("transform", "translate(0, " + (h - padding) + ")")
+svg.append('g')
+   .attr('transform', 'translate(0, ' + (h - padding) + ')')
    .call(xAxis);
 ```
 
 The above code places the x-axis at the bottom of the SVG canvas. Then it's passed as an argument to the `call()` method. The y-axis works in the same way, except the `translate` argument is in the form `(x, 0)`. Because `translate` is a string in the `attr()` method above, you can use concatenation to include variable values for its arguments.
-
----
 
 ## Challenge
 
@@ -1480,34 +1424,36 @@ The scatter plot now has an x-axis. Create a y-axis in a variable named `yAxis` 
                      .domain([0, d3.max(dataset, (d) => d[1])])
                      .range([h - padding, padding]);
 
-    const svg = d3.select("body")
-                  .append("svg")
-                  .attr("width", w)
-                  .attr("height", h);
+    const svg = d3.select('body')
+                  .append('svg')
+                  .attr('width', w)
+                  .attr('height', h);
 
-    svg.selectAll("circle")
+    svg.selectAll('circle')
        .data(dataset)
        .enter()
-       .append("circle")
-       .attr("cx", (d) => xScale(d[0]))
-       .attr("cy",(d) => yScale(d[1]))
-       .attr("r", (d) => 5);
+       .append('circle')
+       .attr('cx', (d) => xScale(d[0]))
+       .attr('cy',(d) => yScale(d[1]))
+       .attr('r', (d) => 5);
 
-    svg.selectAll("text")
+    svg.selectAll('text')
        .data(dataset)
        .enter()
-       .append("text")
-       .text((d) =>  (d[0] + "," + d[1]))
-       .attr("x", (d) => xScale(d[0] + 10))
-       .attr("y", (d) => yScale(d[1]))
+       .append('text')
+       .text((d) =>  (d[0] + ',' + d[1]))
+       .attr('x', (d) => xScale(d[0] + 10))
+       .attr('y', (d) => yScale(d[1]))
 
     const xAxis = d3.axisBottom(xScale);
     // Add your code below this line
+
     const yAxis = d3.axisLeft(yScale);
+    
     // Add your code above this line
 
-    svg.append("g")
-       .attr("transform", "translate(0," + (h - padding) + ")")
+    svg.append('g')
+       .attr('transform', 'translate(0,' + (h - padding) + ')')
        .call(xAxis);
 
     // Add your code below this line
