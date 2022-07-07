@@ -14,7 +14,7 @@
         const h = 500;
         const padding = 50;
 
-        const xScale = d3.scaleLinear()
+        const xScale = d3.scaleTime()
                          .domain([d3.min(dataset, (d) => new Date(d[0])),
                                   d3.max(dataset, (d) => new Date(d[0]))])
                          .range([padding, w - padding]);
@@ -27,6 +27,10 @@
                       .append('svg')
                       .attr('width', w)
                       .attr('height', h);
+
+        svg.append('title')
+           .attr('id', 'title')
+           .text('United States GDP');
 
         svg.selectAll('rect')
           .data(dataset)
