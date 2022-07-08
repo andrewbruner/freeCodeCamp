@@ -16,7 +16,9 @@
 
         const xScale = d3.scaleTime()
                          .domain([d3.min(dataset, (d) => new Date(d[0])),
-                                  d3.max(dataset, (d) => new Date(d[0]))])
+                                  d3.max(dataset, (d) => {
+                                    return new Date(d[0]).setMonth(new Date(d[0]).getMonth() + 3);
+                                  })])
                          .range([padding, w - padding]);
 
         const yScale = d3.scaleLinear()
