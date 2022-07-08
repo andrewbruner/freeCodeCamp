@@ -25,15 +25,19 @@
                          .domain([0, d3.max(dataset, (d) => d[1])])
                          .range([h - padding, padding]);
 
+        d3.select('body')
+          .append('h1')
+          .attr('id', 'title')
+          .text('United States GDP')
+          .style('text-align', 'center');
+
         const svg = d3.select('body')
                       .append('svg')
                       .attr('width', w)
-                      .attr('height', h);
-
-        svg.append('title')
-           .attr('id', 'title')
-           .text('United States GDP');
-
+                      .attr('height', h)
+                      .style('display', 'block')
+                      .style('margin', 'auto');
+        
         svg.selectAll('rect')
           .data(dataset)
           .enter()
