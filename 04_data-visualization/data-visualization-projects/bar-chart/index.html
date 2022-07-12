@@ -31,19 +31,19 @@
           .text('United States GDP')
           .style('text-align', 'center');
 
-        const tooltip = d3.select('body')
-                          .append('div')
-                          .attr('id', 'tooltip')
-                          .attr('data-date', '')
-                          .attr('data-gdp', '')
-                          .style('opacity', 0);
-
         const svg = d3.select('body')
                       .append('svg')
                       .attr('width', w)
                       .attr('height', h)
                       .style('display', 'block')
                       .style('margin', 'auto');
+
+        const tooltip = d3.select('body')
+            .append('div')
+            .attr('id', 'tooltip')
+            .attr('data-date', '')
+            .attr('data-gdp', '')
+            .style('opacity', 0);
         
         svg.selectAll('rect')
           .data(dataset)
@@ -58,6 +58,9 @@
           .attr('height', (d) => h - padding - yScale(d[1]))
           .on('mouseover', (event) => {
             event.target.style.setProperty('fill', 'navy');
+            tooltip.text(`${event.target.getAttribute('data-date')} ${event.target.getAttribute('data-gdp')}`)
+                   .style('margin-left', event.target.getAttribute('x') + 'px')
+                   .style('opacity', 1);
           })
           .on('mouseout', (event) => {
             event.target.style.setProperty('fill', 'black');
