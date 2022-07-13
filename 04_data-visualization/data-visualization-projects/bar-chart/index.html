@@ -43,6 +43,11 @@
             .attr('id', 'tooltip')
             .attr('data-date', '')
             .attr('data-gdp', '')
+            .style('position', 'absolute')
+            .style('top', '400px')
+            .style('text-align', 'center')
+            .style('background-color', '#fff')
+            .style('padding', '10px')
             .style('opacity', 0);
         
         svg.selectAll('rect')
@@ -58,12 +63,20 @@
           .attr('height', (d) => h - padding - yScale(d[1]))
           .on('mouseover', (event) => {
             event.target.style.setProperty('fill', 'navy');
-            tooltip.text(`${event.target.getAttribute('data-date')} ${event.target.getAttribute('data-gdp')}`)
-                   .style('margin-left', event.target.getAttribute('x') + 'px')
+            let date = event.target.getAttribute('data-date');
+            date = date.split('-');
+            let year = date[0];
+            let quarter = date[1];
+            quarter = quarter == '01' ? 'Q1' : quarter == '04' ? 'Q2' : quarter == '07' ? 'Q3' : 'Q4';
+            date = `${year} ${quarter}`;
+            tooltip.html(`${date} <br> $${event.target.getAttribute('data-gdp')} Billion`)
+                   .style('left', event.target.getBoundingClientRect().x + 25 + 'px')
+                   .attr('data-date', event.target.getAttribute('data-date'))
                    .style('opacity', 1);
           })
           .on('mouseout', (event) => {
             event.target.style.setProperty('fill', 'black');
+            tooltip.style('opacity', 0);
           });
         
         const xAxis = d3.axisBottom(xScale)
