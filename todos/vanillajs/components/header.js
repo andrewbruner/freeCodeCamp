@@ -1,0 +1,11 @@
+const header = document.createElement('header');
+header.classList.add('header');
+let h1 = document.createElement('h1');
+h1.textContent = 'todos';
+let input = document.createElement('input');
+input.classList.add('new-todo');
+input.placeholder = 'What needs to be done?';
+input.autofocus = true;
+header.append(h1);
+header.append(input);
+export default header;

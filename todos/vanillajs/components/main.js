@@ -1,0 +1,16 @@
+const main = document.createElement('section');
+main.classList.add('main');
+main.style.display = 'none';
+let input = document.createElement('input');
+input.id = 'toggle-all';
+input.classList.add('toggle-all');
+input.type = 'checkbox';
+main.append(input);
+const label = document.createElement('label');
+label.setAttribute('for', 'toggle-all');
+label.textContent = 'Mark all as complete';
+main.append(label);
+const ul = document.createElement('ul');
+ul.classList.add('todo-list');
+main.append(ul);
+export default main;

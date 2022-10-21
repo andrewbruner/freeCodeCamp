@@ -1,0 +1,4 @@
+span, input[type="text"] {
+	display: inline-block;
+	width: 20rem;
+}
